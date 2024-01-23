@@ -1,9 +1,9 @@
-<app-header></app-header>
+<app-header (featureSelected)="onNavigate($event)"></app-header> <!-- the $event thing could also be replaced with "any-data" and the $event could be added to header.component.html in the click events, like "onSelect('recipe', $event)" -->
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <jsapp2-recipes></jsapp2-recipes>
-      <jsapp2-shopping-list></jsapp2-shopping-list>
+      <jsapp2-recipes *ngIf="loadedFeature === 'recipe'"></jsapp2-recipes>
+      <jsapp2-shopping-list *ngIf="loadedFeature === 'shopping-list'"></jsapp2-shopping-list>
     </div>
   </div>
 </div>

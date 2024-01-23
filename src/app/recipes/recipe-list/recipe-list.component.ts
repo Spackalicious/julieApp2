@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Recipe } from '../recipe.model'
 
 @Component({
@@ -6,9 +6,22 @@ import { Recipe } from '../recipe.model'
   templateUrl: './recipe-list.component.html',
   styleUrl: './recipe-list.component.css'
 })
-export class RecipeListComponent {
+export class RecipeListComponent implements OnInit {
+  @Output() recipeWasSelected = new EventEmitter<Recipe>();
   recipes: Recipe[] = [
-    new Recipe('A Test Recipe', 'This is a test', 'https://imgs.search.brave.com/1Bp992EOuVTc8O2dvCw_qgGE7T4d1OffNSRQUN8yzaY/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/cHJlbWl1bS12ZWN0/b3IvY29va2luZy1s/b2dvLWRlc2lnbl82/MzYwODMtMTQwLmpw/Zz9zaXplPTYyNiZl/eHQ9anBn')
+    new Recipe('A Test Recipe', 'This is a test', 'https://imgs.search.brave.com/3XDxnFO7dypnlCcR8BQCF2Wgl-ps_ECfwZ0tZmVFIJ8/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9hc3Nl/dHMuZHJ5aWNvbnMu/Y29tL3VwbG9hZHMv/aWNvbi9wcmV2aWV3/LzExMjU3L3NtYWxs/XzF4X2RjY2ZlYWI0/LTUzOGUtNGZhMS04/ZjU4LTk5ZTQ1NGJl/Yjc2ZS5wbmc'), 
+    new Recipe('A 2nd Test Recipe', 'This is another test', 'https://imgs.search.brave.com/3XDxnFO7dypnlCcR8BQCF2Wgl-ps_ECfwZ0tZmVFIJ8/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9hc3Nl/dHMuZHJ5aWNvbnMu/Y29tL3VwbG9hZHMv/aWNvbi9wcmV2aWV3/LzExMjU3L3NtYWxs/XzF4X2RjY2ZlYWI0/LTUzOGUtNGZhMS04/ZjU4LTk5ZTQ1NGJl/Yjc2ZS5wbmc')
   ];
 
+  constructor() {
+
+  }
+
+  ngOnInit() {
+
+  }
+
+  onRecipeSelected(recipe: Recipe) {
+    this.recipeWasSelected.emit(recipe);
+  }
 }
