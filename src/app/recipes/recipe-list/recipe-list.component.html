@@ -1,18 +1,29 @@
 <div class="row">
     <div class="col-xs-12">
-        <button class="btn btn-success">New Recipe</button>
+        <button class="btn btn-success" (click)="onNewRecipe()">New Recipe</button>
     </div>
 </div>
 <hr>
 <div class="row">
     <div class="col-xs-12">
-        
-        
-
         <jsapp2-recipe-item  
+        *ngFor="let recipeEl of recipes; let i = index"
+        [recipe]="recipeEl"
+        class="recipe"        
+        [index]="i"></jsapp2-recipe-item> 
+
+        <!-- VERSION 2 -->
+        <!-- <jsapp2-recipe-item  
+        *ngFor="let recipeEl of recipes"
+        [recipe]="recipeEl"
+        class="recipe"></jsapp2-recipe-item>  -->
+       
+        <!-- VERSION 1 -->
+        <!-- <jsapp2-recipe-item  
         *ngFor="let recipeEl of recipes"
         [recipe]="recipeEl"
         class="recipe"
-        (recipeSelected)="onRecipeSelected(recipeEl)"></jsapp2-recipe-item> <!-- the recipe in square brackets is referring to the "recipe" from @Input in recipe-item-component.ts -->
+        (recipeSelected)="onRecipeSelected(recipeEl)"></jsapp2-recipe-item>  -->
+        <!-- the recipe in square brackets is referring to the "recipe" from @Input in recipe-item-component.ts -->
     </div>
 </div>
