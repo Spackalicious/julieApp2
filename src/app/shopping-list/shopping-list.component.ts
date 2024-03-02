@@ -9,10 +9,7 @@ import { Subscription } from 'rxjs';
   styleUrl: './shopping-list.component.css'
 })
 export class ShoppingListComponent implements OnInit, OnDestroy {
-  // ingredients: Ingredient[] = [
-  //   new Ingredient('Apples', 5),
-  //   new Ingredient('Tomatoes', 10)
-  // ];
+
   ingredients: Ingredient[];
   private igChangeSub: Subscription;
 
@@ -28,11 +25,13 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
       );
    }
 
+   onEditItem(index: number) {
+    this.slService.startedEditing.next(index);
+   }
+
    ngOnDestroy(): void {
      this.igChangeSub.unsubscribe();
    }
 
-  // onIngredientAdded(ingredient: Ingredient) {
-  //   this.ingredients.push(ingredient);
-  // }
+
 }
